@@ -1,0 +1,15 @@
+{
+  "name": "taiko-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bootstrap": "lerna bootstrap --no-ci",
+    "mocha-test": "lerna exec --scope mocha-boilerplate npm test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lerna": "^3.20.2"
+  }
+}

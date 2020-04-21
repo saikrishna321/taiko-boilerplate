@@ -1,0 +1,21 @@
+{
+  "name": "mocha-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "scripts": {
+    "test": "mocha --require esm --opts mocha.opts __tests__/*.spec.js --timeout 900000 --reporter mochawesome --reporter-options reportDir=reports/html-report"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "esm": "^3.2.25",
+    "faker": "^4.1.0",
+    "mocha": "^7.1.1",
+    "lodash": "^4.17.15",
+    "taiko": "^1.0.7",
+    "mochawesome": "^6.1.0",
+    "rimraf": "^3.0.2"
+  }
+}
