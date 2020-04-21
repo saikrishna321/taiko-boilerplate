@@ -7,7 +7,7 @@ Tests run against local wordpress app.
 
 * Navigate to http://127.0.0.1:8000/wp-admin/install.php and setup the application and create a user account to login into Wordpress Dashboard.
 
-* Update the credentials details packages/mocha-boilerplate/actor/actorData.js
+* Update the credentials details https://github.com/saikrishna321/taiko-boilerplate/blob/master/packages/mocha-boilerplate/actor/actorData.js
 
 ### Execute Scripts
 
