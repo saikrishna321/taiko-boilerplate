@@ -19,4 +19,8 @@ export default class Actor {
   async navigateToPostsPageViaSideNav() {
     await Interactions.navigateToPostsPageViaSideNav();
   }
+
+  async navigateToUsersPage() {
+    await Interactions.navigateToUsersPage();
+  }
 }

@@ -14,7 +14,10 @@ import { expect } from 'chai';
 import Admin from '../actor/admin';
 import interrogations from '../actions/interrogations';
 import PostInterrogations from '../interrogations/postInterrogations';
+import NewUserInterrogations from '../interrogations/newUserInterrogations';
 import Author from '../actor/author';
+
+import NewUserBuilder from '../builder/NewUserBuilder';
 
 before('open Browser', async () => {
   setConfig({
@@ -82,5 +85,26 @@ describe('New Post', () => {
 
   afterEach('Close context', async () => {
     await closeIncognitoWindow('admin');
+  });
+});
+
+describe('New User', () => {
+  it('Admin Should be able to create a new user', async () => {
+    const userName = faker.name.findName();
+    const emailId = faker.internet.email();
+    const firstName = faker.name.firstName();
+    const lastName = faker.name.lastName();
+    const user = new NewUserBuilder()
+      .userName(userName)
+      .email(emailId)
+      .firstName(firstName)
+      .lastName(lastName)
+      .build();
+
+    let admin = new Admin();
+    await admin.login();
+    await admin.navigateToUsersPage();
+    await admin.createNewUser(user);
+    expect(await NewUserInterrogations.checkIfNewUserIsCreated(user)).be.true;
   });
 });

@@ -1,8 +1,4 @@
-import {
-  write,
-  click,
-  text,
-} from 'taiko';
+import { write, click, text } from 'taiko';
 
 export async function login(user, pass, loginPage) {
   await write(user, loginPage.username);
@@ -10,6 +6,6 @@ export async function login(user, pass, loginPage) {
   await click(loginPage.loginButton);
 }
 
-export async function navigateToSideNav() {
-  await click(text('Posts'));
+export async function navigateToSideNav(textArg) {
+  await click(text(textArg));
 }
