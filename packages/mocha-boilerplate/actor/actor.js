@@ -1,6 +1,8 @@
 import actorData from './actorData';
 import _ from 'lodash';
-import Interactions from '../actions/interactions';
+import LoginInteractions from '../interactions/LoginInteractions';
+import SideNavInteractions from '../interactions/sideNavInteractions';
+
 export default class Actor {
   constructor() {
     let actor = this.getActor();
@@ -13,14 +15,14 @@ export default class Actor {
   }
 
   async login() {
-    await Interactions.loginWith(this.username, this.password);
+    await LoginInteractions.loginWith(this.username, this.password);
   }
 
   async navigateToPostsPageViaSideNav() {
-    await Interactions.navigateToPostsPageViaSideNav();
+    await SideNavInteractions.navigateToPostsPageViaSideNav();
   }
 
   async navigateToUsersPage() {
-    await Interactions.navigateToUsersPage();
+    await SideNavInteractions.navigateToUsersPage();
   }
 }

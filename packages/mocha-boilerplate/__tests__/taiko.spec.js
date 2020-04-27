@@ -12,7 +12,7 @@ const addContext = require('mochawesome/addContext');
 
 import { expect } from 'chai';
 import Admin from '../actor/admin';
-import interrogations from '../actions/interrogations';
+import SideNavInterrogations from '../interrogations/sideNavInterrogations';
 import PostInterrogations from '../interrogations/postInterrogations';
 import NewUserInterrogations from '../interrogations/newUserInterrogations';
 import Author from '../actor/author';
@@ -53,14 +53,14 @@ describe('Login', () => {
     let admin = new Admin();
     await admin.login();
     await admin.navigateToPostsPageViaSideNav();
-    expect(await interrogations.checkForSettingsInSideNav()).be.true;
+    expect(await SideNavInterrogations.checkForSettingsInSideNav()).be.true;
   });
 
   it('Should be able to login as author and not see settings option', async () => {
     let author = new Author();
     await author.login();
     await author.navigateToPostsPageViaSideNav();
-    expect(await interrogations.checkForSettingsInSideNav()).be.false;
+    expect(await SideNavInterrogations.checkForSettingsInSideNav()).be.false;
   });
 });
 

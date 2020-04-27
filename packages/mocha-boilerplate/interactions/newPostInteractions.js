@@ -1,10 +1,7 @@
 import NewPostElements from '../elements/newPostPage';
-import { screenshot, click, write, text, $, waitFor } from 'taiko/lib/taiko';
+import { click, write, text, $, waitFor } from 'taiko/lib/taiko';
 
 export default new (class NewPostInterActions {
-  async checkIfPublishIsEnabled() {
-    return NewPostElements.publish().exists();
-  }
 
   async writePost(postTitle) {
     await click(NewPostElements.addNew);
