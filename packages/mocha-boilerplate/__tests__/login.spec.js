@@ -19,22 +19,20 @@ import NewUserBuilder from '../builder/NewUserBuilder';
 import { createUser } from '../data/SeedData';
 import { screenShotOnFailure } from '../decorators/ScreenShot';
 
-before('open Browser', async () => {
-  setConfig({
-    waitForNavigation: true,
-    retryTimeout: 800,
-    retryInterval: 10,
-  });
-  await openBrowser({ headless: true });
-});
-
-afterEach('Close Browser context', async function () {});
-
-after('Close Browser', async () => {
-  await closeBrowser();
-});
 @suite
 class Login {
+  static async before() {
+    setConfig({
+      waitForNavigation: true,
+      retryTimeout: 800,
+      retryInterval: 10,
+    });
+    await openBrowser({ headless: true });
+  }
+
+  static async after() {
+    await closeBrowser();
+  }
   async before() {
     await openIncognitoWindow('http://127.0.0.1:8000/wp-login.php', {
       name: 'user',
@@ -63,32 +61,6 @@ class Login {
     expect(await SideNavInterrogations.checkForSettingsInSideNav()).be.false;
   }
 }
-describe.skip('New Post', () => {
-  it('Add a new post as Author and Admin should be able to delete the draft', async () => {
-    const postTitle = faker.name.findName();
-    let wpUserAuthor = await createUser('Author');
-    let author = new Author(wpUserAuthor);
-    await author.login();
-    await author.navigateToPostsPageViaSideNav();
-    await author.writeNewPost(postTitle);
-
-    await openIncognitoWindow('http://127.0.0.1:8000/wp-login.php', {
-      name: 'admin',
-      navigationTimeout: 10000,
-    });
-
-    let wpUserAdmin = await createUser('Admin');
-    let admin = new Admin(wpUserAdmin);
-    await admin.login();
-    await author.navigateToPostsPageViaSideNav();
-    await admin.deletePost(postTitle);
-    expect(await PostInterrogations.checkIfNewPostIsDeleted(postTitle)).be.true;
-  });
-
-  afterEach('Close context', async () => {
-    await closeIncognitoWindow('admin');
-  });
-});
 
 describe.skip('New User', () => {
   it('Admin Should be able to create a new user', async () => {
