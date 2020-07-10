@@ -1,2 +1,6 @@
 node_modules
 packages/mocha-boilerplate/reports
+packages/mocha-boilerplate/allure-report
+packages/mocha-boilerplate/allure-results
+.idea/
+packages/db-client/node_modules

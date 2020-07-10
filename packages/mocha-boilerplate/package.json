@@ -5,17 +5,35 @@
   "main": "index.js",
   "author": "",
   "scripts": {
-    "test": "mocha --require esm --opts mocha.opts __tests__/*.spec.js --timeout 900000 --reporter mochawesome --reporter-options reportDir=reports/html-report"
+    "clean": "rimraf ./allure-results/history",
+    "copy": "mv allure-report/history allure-results/history",
+    "allure-report": "allure generate ./allure-results -c && npm run clean && npm run copy && allure open",
+    "test": "mocha --require esm --require source-map-support/register --require ts-node/register --file __tests__/setUp.js __tests__/*.spec.js --timeout 900000 --reporter mocha-multi-reporters --reporter-options configFile=config/mocha-config.json"
   },
   "license": "ISC",
   "dependencies": {
     "chai": "^4.2.0",
     "esm": "^3.2.25",
     "faker": "^4.1.0",
-    "mocha": "^7.1.1",
+    "taiko": "^1.0.12",
+    "@types/lodash": "^4.14.157",
     "lodash": "^4.17.15",
-    "taiko": "^1.0.7",
     "mochawesome": "^6.1.0",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "@testdeck/mocha": "^0.1.0",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^14.0.14",
+    "mocha": "^8.0.1",
+    "ts-node": "^8.10.2",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.6",
+    "db-client": "1.0.0",
+    "mocha-multi-reporters": "^1.1.7",
+    "mocha-allure-reporter": "^1.4.0",
+    "allure-commandline": "^2.13.0",
+    "p-event": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/faker": "^4.1.12"
   }
 }

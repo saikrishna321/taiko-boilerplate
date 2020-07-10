@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "allowJs": true,
+    "lib": ["es7"],
+    "types": ["node", "mocha", "chai"],
+    "removeComments": true,
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./*"],
+      "src/*": ["./src/*"]
+    },
+    "typeRoots": ["node_modules/@types"]
+  },
+  "exclude": ["node_modules"]
+}

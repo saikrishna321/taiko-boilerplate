@@ -1,0 +1,3 @@
+{
+  "reporterEnabled": "./data/mochaListener.js, mocha-allure-reporter"
+}
