@@ -2,7 +2,7 @@ import Actor from './actor';
 import PostInteractions from '../interactions/postInteractions';
 import NewUserInteractions from '../interactions/newUserInteractions';
 import createUser from '../data/SeedData';
-
+import Log from '../decorators/Log';
 export default class Admin extends Actor {
   constructor(wpUser) {
     super();
@@ -10,6 +10,7 @@ export default class Admin extends Actor {
     this.password = wpUser.password;
   }
 
+  @Log('Delete Post')
   async deletePost(postTitle) {
     await PostInteractions.deletePost(postTitle);
   }

@@ -8,14 +8,14 @@
     "clean": "rimraf ./allure-results/history",
     "copy": "mv allure-report/history allure-results/history",
     "allure-report": "allure generate ./allure-results -c && npm run clean && npm run copy && allure open",
-    "test": "mocha --require esm --require source-map-support/register --require ts-node/register --file __tests__/setUp.js __tests__/*.spec.js --timeout 900000 --reporter mocha-multi-reporters --reporter-options configFile=config/mocha-config.json"
+    "test": "mocha --require esm --require source-map-support/register --require ts-node/register --file __tests__/setUp.js __tests__/*.spec.js --timeout 900000"
   },
   "license": "ISC",
   "dependencies": {
     "chai": "^4.2.0",
     "esm": "^3.2.25",
     "faker": "^4.1.0",
-    "taiko": "^1.0.12",
+    "taiko": "^1.0.13",
     "@types/lodash": "^4.14.157",
     "lodash": "^4.17.15",
     "mochawesome": "^6.1.0",
