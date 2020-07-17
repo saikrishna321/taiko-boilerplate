@@ -3,7 +3,7 @@ import { find } from 'lodash';
 import LoginInteractions from '../interactions/LoginInteractions';
 import SideNavInteractions from '../interactions/sideNavInteractions';
 import Log from '../decorators/Log';
-
+let runner;
 export default class Actor {
   getActor() {
     return find(actorData, { role: this.constructor.name });

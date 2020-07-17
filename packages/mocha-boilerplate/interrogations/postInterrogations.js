@@ -1,5 +1,5 @@
 import PostPage from '../elements/postPage';
-import { click, text } from 'taiko/lib/taiko';
+import { click, text, waitFor, screenshot } from 'taiko';
 
 export default {
   async checkIfNewPostIsDeleted(title) {

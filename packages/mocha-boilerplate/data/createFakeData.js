@@ -5,6 +5,6 @@ export function createData() {
     user: faker.name.findName(),
     password: faker.internet.password(),
     name: faker.name.findName(),
-    id: Math.floor(100 + Math.random() * 900),
+    id: Math.floor(100 + Math.random() * 90000),
   };
 }

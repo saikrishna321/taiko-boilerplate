@@ -10,7 +10,7 @@ class NewPostElements {
   }
 
   static get addNew() {
-    return text('Add New', toRightOf('Posts'));
+    return text('Add New');
   }
 
   static get postTitle() {
@@ -18,7 +18,7 @@ class NewPostElements {
   }
 
   static get viewPosts() {
-    return $("//*[@aria-label='View Posts']");
+    return $("//*[@class='post-publish-panel__postpublish-buttons']/a");
   }
 
   static get publish() {

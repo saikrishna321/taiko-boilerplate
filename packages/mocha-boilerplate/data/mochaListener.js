@@ -1,6 +1,7 @@
 var mocha = require('mocha');
 var Base = mocha.reporters.Base;
 import eventEmitter from '../eventBus';
+import { screenshot } from 'taiko';
 
 module.exports = MochaListener;
 function MochaListener(runner) {
@@ -21,11 +22,10 @@ function MochaListener(runner) {
     passes.push(test);
   });
 
-  runner.on('fail', function (test, done) {
-    console.log('Inside Failure');
+  runner.on('fail', async function (test, done) {
     eventEmitter.emit('myEvent', { test, done });
     failures.push(test);
-    console.log('Inside Failure-1', done);
+    await screenshot();
   });
 
   runner.on('end', function () {
@@ -36,7 +36,7 @@ function MochaListener(runner) {
       passes: passes.map(clean),
     };
     var jsonOutput = JSON.stringify(obj, null, 2);
-    process.stdout.write(jsonOutput);
+    //process.stdout.write(jsonOutput);
   });
 }
 

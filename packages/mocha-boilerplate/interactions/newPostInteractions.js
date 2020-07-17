@@ -7,7 +7,6 @@ export default new (class NewPostInterActions {
     await click(NewPostElements.addNew);
     await click(NewPostElements.closeModal);
     await write(postTitle, NewPostElements.postTitle);
-    await click(text('Save Draft'));
     await click(NewPostElements.publish);
     await click(text('Publish'));
     await click(NewPostElements.viewPosts);

@@ -6,7 +6,8 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "mocha-test": "lerna exec --scope mocha-boilerplate npm test",
-    "mocha-allure-report": "lerna exec --scope mocha-boilerplate npm run allure-report"
+    "mocha-allure-report": "lerna exec --scope mocha-boilerplate npm run allure-report",
+    "mocha-e2e-device-test": "lerna exec --scope mocha-boilerplate npm run device-test"
   },
   "author": "",
   "license": "ISC",

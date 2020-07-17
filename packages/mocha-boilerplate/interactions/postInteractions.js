@@ -1,9 +1,11 @@
-import PostPage from '../elements/postPage';
-import { screenshot, hover, click, text } from 'taiko/lib/taiko';
+import FlowManager from '../flows/FlowManager';
 
+let runner;
 export default new (class PostInteractions {
+  constructor() {
+    runner = new FlowManager();
+  }
   async deletePost(title) {
-    await hover(text(title));
-    await click(PostPage.trashPost);
+    await runner.deletePost(title);
   }
 })();

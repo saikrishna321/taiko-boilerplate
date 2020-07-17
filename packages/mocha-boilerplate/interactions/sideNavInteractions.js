@@ -1,9 +1,14 @@
 import { goto, click, text } from 'taiko/lib/taiko';
+import FlowManager from '../flows/FlowManager';
+
+let runner;
 
 export default new (class SideNavInteractions {
-
+  constructor() {
+    runner = new FlowManager();
+  }
   async navigateToPostsPageViaSideNav() {
-    await click(text('Posts'));
+    await runner.navigateToPostsPage();
   }
 
   async navigateToUsersPage() {

@@ -29,6 +29,10 @@
         "999999",
         "--require",
         "esm",
+        "--require",
+        "source-map-support/register",
+        "--require",
+        "ts-node/register",
         "--colors",
         "${file}"
       ],

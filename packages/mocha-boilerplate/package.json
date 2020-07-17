@@ -8,7 +8,8 @@
     "clean": "rimraf ./allure-results/history",
     "copy": "mv allure-report/history allure-results/history",
     "allure-report": "allure generate ./allure-results -c && npm run clean && npm run copy && allure open",
-    "test": "mocha --require esm --require source-map-support/register --require ts-node/register --file __tests__/setUp.js __tests__/*.spec.js --timeout 900000"
+    "test": "mocha --require esm --require source-map-support/register --require ts-node/register --file __tests__/setUp.js __tests__/*.spec.js --timeout 900000 --reporter mocha-multi-reporters --reporter-options configFile=config/mocha-config.json",
+    "device-test": "TAIKO_EMULATE_DEVICE='iPhone X' mocha --require esm --require source-map-support/register --require ts-node/register --file __tests__/setUp.js __tests__/*.spec.js --timeout 900000 --reporter mocha-multi-reporters --reporter-options configFile=config/mocha-config.json"
   },
   "license": "ISC",
   "dependencies": {

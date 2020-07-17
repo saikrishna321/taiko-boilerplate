@@ -4,6 +4,7 @@ import {
   openIncognitoWindow,
   closeIncognitoWindow,
   setConfig,
+  switchTo
 } from 'taiko';
 
 var faker = require('faker');
@@ -21,7 +22,7 @@ class NewPost {
   static async before() {
     setConfig({
       waitForNavigation: true,
-      retryTimeout: 800,
+      retryTimeout: 2000,
       retryInterval: 10,
     });
     await openBrowser({ headless: true });
@@ -36,13 +37,20 @@ class NewPost {
       name: 'user',
       navigationTimeout: 10000,
     });
+
+    await openIncognitoWindow('http://127.0.0.1:8000/wp-login.php', {
+      name: 'admin',
+      navigationTimeout: 10000,
+    });
   }
 
   async after() {
     await closeIncognitoWindow('admin');
+    await closeIncognitoWindow('user');
   }
-  @test
+  @test.only
   async 'Add a new post as Author and Admin should be able to delete the draft'() {
+    await switchTo({ name: 'user' });
     const postTitle = faker.name.findName();
     let wpUserAuthor = await createUser('Author');
     let author = new Author(wpUserAuthor);
@@ -50,11 +58,7 @@ class NewPost {
     await author.navigateToPostsPageViaSideNav();
     await author.writeNewPost(postTitle);
 
-    await openIncognitoWindow('http://127.0.0.1:8000/wp-login.php', {
-      name: 'admin',
-      navigationTimeout: 10000,
-    });
-
+    await switchTo({ name: 'admin' });
     let wpUserAdmin = await createUser('Admin');
     let admin = new Admin(wpUserAdmin);
     await admin.login();

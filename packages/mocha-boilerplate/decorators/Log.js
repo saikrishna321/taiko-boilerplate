@@ -7,7 +7,7 @@ export default function log(name) {
         try {
           const result = await original.apply(this, args);
           console.log(
-            `${new Date().toISOString()} - Completed Executing ${name}`
+            `${new Date().toISOString()} - Completed Executing ${name}, ${JSON.stringify(this)}`
           );
           return result;
         } catch (e) {
