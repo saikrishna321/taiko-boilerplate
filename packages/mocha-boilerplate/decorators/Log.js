@@ -1,13 +1,15 @@
+import logger from '../utils/logger';
+
 export default function log(name) {
   return function decorator(t, n, descriptor) {
     const original = descriptor.value;
     if (typeof original === 'function') {
       descriptor.value = async function (...args) {
-        console.log(`${new Date().toISOString()} - Executing ${name}`);
+        logger.info(`Executing ${name}`);
         try {
           const result = await original.apply(this, args);
-          console.log(
-            `${new Date().toISOString()} - Completed Executing ${name}, ${JSON.stringify(this)}`
+          logger.info(
+            `Completed Executing ${name}, ${JSON.stringify(this)}`
           );
           return result;
         } catch (e) {

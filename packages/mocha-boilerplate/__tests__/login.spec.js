@@ -17,8 +17,7 @@ import NewUserInterrogations from '../interrogations/newUserInterrogations';
 import Author from '../actor/author';
 import NewUserBuilder from '../builder/NewUserBuilder';
 import { createUser } from '../data/SeedData';
-import { screenShotOnFailure } from '../decorators/ScreenShot';
-
+import logger from '../utils/logger';
 @suite
 class Login {
   static async before() {

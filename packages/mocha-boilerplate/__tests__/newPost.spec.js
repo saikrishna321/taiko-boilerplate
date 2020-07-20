@@ -4,7 +4,7 @@ import {
   openIncognitoWindow,
   closeIncognitoWindow,
   setConfig,
-  switchTo
+  switchTo,
 } from 'taiko';
 
 var faker = require('faker');

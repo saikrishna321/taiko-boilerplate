@@ -32,7 +32,8 @@
     "mocha-multi-reporters": "^1.1.7",
     "mocha-allure-reporter": "^1.4.0",
     "allure-commandline": "^2.13.0",
-    "p-event": "^4.2.0"
+    "p-event": "^4.2.0",
+    "chalk": "^4.1.0"
   },
   "devDependencies": {
     "@types/faker": "^4.1.12"
