@@ -5,7 +5,7 @@ let runner;
 
 export default new (class SideNavInteractions {
   constructor() {
-    runner = new FlowManager();
+    runner = FlowManager.getInstance();
   }
   async navigateToPostsPageViaSideNav() {
     await runner.navigateToPostsPage();
