@@ -33,9 +33,13 @@
     "mocha-allure-reporter": "^1.4.0",
     "allure-commandline": "^2.13.0",
     "p-event": "^4.2.0",
-    "chalk": "^4.1.0"
+    "chalk": "^4.1.0",
+    "node-fetch": "^2.6.0",
+    "btoa": "^1.2.1"
   },
   "devDependencies": {
-    "@types/faker": "^4.1.12"
+    "@types/btoa": "^1.2.3",
+    "@types/faker": "^4.1.12",
+    "@types/node-fetch": "^2.5.7"
   }
 }

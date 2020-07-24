@@ -48,7 +48,7 @@ class NewPost {
     await closeIncognitoWindow('admin');
     await closeIncognitoWindow('user');
   }
-  @test.only
+  @test
   async 'Add a new post as Author and Admin should be able to delete the draft'() {
     await switchTo({ name: 'user' });
     const postTitle = faker.name.findName();

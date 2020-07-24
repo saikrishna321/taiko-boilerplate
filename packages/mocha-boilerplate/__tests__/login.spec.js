@@ -6,17 +6,15 @@ import {
   setConfig,
 } from 'taiko';
 
-var faker = require('faker');
-
 import { expect } from 'chai';
 import { test, suite } from '@testdeck/mocha';
 import Admin from '../actor/admin';
 import SideNavInterrogations from '../interrogations/sideNavInterrogations';
-import PostInterrogations from '../interrogations/postInterrogations';
 import NewUserInterrogations from '../interrogations/newUserInterrogations';
 import Author from '../actor/author';
-import NewUserBuilder from '../builder/NewUserBuilder';
-import { createUser } from '../data/SeedData';
+import User from '../data/User';
+import ContributorUser from '../data/ContributorUser';
+import { createUser, createNewUser } from '../data/SeedData';
 import logger from '../utils/logger';
 @suite
 class Login {
@@ -59,26 +57,16 @@ class Login {
     await author.navigateToPostsPageViaSideNav();
     expect(await SideNavInterrogations.checkForSettingsInSideNav()).be.false;
   }
-}
 
-describe.skip('New User', () => {
-  it('Admin Should be able to create a new user', async () => {
-    const userName = faker.name.findName();
-    const emailId = faker.internet.email();
-    const firstName = faker.name.firstName();
-    const lastName = faker.name.lastName();
-    const user = new NewUserBuilder()
-      .userName(userName)
-      .email(emailId)
-      .firstName(firstName)
-      .lastName(lastName)
-      .build();
-
-    let wpUser = await createUser('Admin');
-    let admin = new Admin(wpUser);
+  @test
+  async shouldBeAbleToLoginWithNewlyCreatedUser() {
+    const user = User.getUser();
+    const contributorUser = new ContributorUser(user);
+    let { wpUserData } = await createNewUser('administrator');
+    let admin = new Admin(wpUserData);
     await admin.login();
     await admin.navigateToUsersPage();
-    await admin.createNewUser(user);
+    await admin.createNewUser(contributorUser);
     expect(await NewUserInterrogations.checkIfNewUserIsCreated(user)).be.true;
-  });
-});
+  }
+}
