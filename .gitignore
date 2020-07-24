@@ -3,4 +3,5 @@ packages/mocha-boilerplate/reports
 packages/mocha-boilerplate/allure-report
 packages/mocha-boilerplate/allure-results
 .idea/
+.env
 packages/db-client/node_modules

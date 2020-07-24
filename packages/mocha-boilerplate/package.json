@@ -35,7 +35,8 @@
     "p-event": "^4.2.0",
     "chalk": "^4.1.0",
     "node-fetch": "^2.6.0",
-    "btoa": "^1.2.1"
+    "btoa": "^1.2.1",
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "@types/btoa": "^1.2.3",
